@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flappy Game</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        .switch {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        .label {
+            position: absolute;
+            top: 15px;
+            font-size: 14px;
+            color: black; /* Change to white if in dark mode */
+            display: none; /* Hide by default */
+            font-family: Arial, sans-serif; /* Set font to Arial */
+        }
+        .label.light {
+            left: calc(50% - 70px); /* Position for light label */
+        }
+        .label.dark {
+            left: calc(50% + 40px); /* Position for dark label */
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas"></canvas>
+    <label class="switch" id="modeSwitch">
+        <input type="checkbox" id="modeSlider">
+        <span class="slider"></span>
+    </label>
+    <span class="label light" id="lightLabel">Light</span>
+    <span class="label dark" id="darkLabel">Dark</span>
+    <script src="script.js"></script>
+    <script>
+        // Example of using localStorage
+        function saveData() {
+            localStorage.setItem('key', 'value');
+        }
+
+        function loadData() {
+            const value = localStorage.getItem('key');
+            console.log(value);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            saveData();
+            loadData();
+        });
+    </script>
+</body>
+</html>
